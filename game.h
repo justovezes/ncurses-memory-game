@@ -3,9 +3,11 @@
 
 #include "main.h"
 #include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 #include <sys/random.h>
 
-typedef enum {UP, DOWN, LEFT, RIGHT} DIRECTION;
+typedef enum {UP, DOWN, LEFT, RIGHT, NO_DIRECTION} DIRECTION;
 
 typedef Vector2 MapSize;
 typedef Vector2 Position;
@@ -17,13 +19,14 @@ typedef struct gameModeSettings {
 
 typedef struct card {
 	bool is_available;
+  bool is_shown;
 	int symbol;
 	Position position;
 } Card;
 
 typedef struct symbolList {
 	int available_symbols;
-	const int const *symbols;
+	int *symbols;
 } SymbolList;
 
 extern const GameModeSettings game_mode_settings[TOTAL_MODES];

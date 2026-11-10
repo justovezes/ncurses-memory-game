@@ -39,7 +39,7 @@ MODE menu(void)
 			case KEY_DOWN: case 's':
 				selected = (selected + 1) % TOTAL_MODES;
 				break;
-			case ENTER_KEY:
+      case ENTER_KEY: case ' ':
 				delwin(menu_contents_win);
 				delwin(menu_win);
 				return selected;
